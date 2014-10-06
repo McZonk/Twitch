@@ -11,11 +11,14 @@
 
 #import "TwitchChannelRequest.h"
 #import "TwitchChannelResponse.h"
+#import "TwitchIngest.h"
 #import "TwitchIngestRequest.h"
 #import "TwitchIngestResponse.h"
-#import "TwitchOAuth2Request.h"
-#import "TwitchURLConnection.h"
 #import "TwitchOAuth2Authorization.h"
+#import "TwitchOAuth2Request.h"
+#import "TwitchOAuth2Response.h"
+#import "TwitchScope.h"
+#import "TwitchURLConnection.h"
 
 #import "TwitchAuth.h"
 
@@ -45,81 +48,139 @@
 
 - (void)testIngest
 {
+	XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+
 	TwitchIngestRequest *request = [[TwitchIngestRequest alloc] init];
 	
-	dispatch_group_t group = dispatch_group_create();
-	dispatch_group_enter(group);
-	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) completionHandler:^(TwitchURLResponse *response, NSError *error) {
-		NSLog(@"%@ %@ %@", request, response, error);
+	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_main_queue() completionHandler:^(TwitchURLResponse *response, NSError *error) {
 		
-		dispatch_group_leave(group);
+		XCTAssert(response != nil);
+		XCTAssert(error == nil);
+		XCTAssert([response isKindOfClass:TwitchIngestResponse.class]);
+		
+		TwitchIngestResponse *ingestResponse = (TwitchIngestResponse *)response;
+		
+		XCTAssert(ingestResponse.ingests.count > 0);
+		
+		TwitchIngest *ingest = ingestResponse.ingests.firstObject;
+		
+		XCTAssert(ingest.name != nil);
+		XCTAssert(ingest.templateURL != nil);
+		XCTAssert(ingest.identifier > 0);
+		XCTAssert(ingest.availability >= 0.0);
+		
+		[expectation fulfill];
+
 	}];
 	[self.queue addOperation:connection];
 	
-	dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+	[self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
+		[connection cancel];
+	}];
 }
 
-- (void)testOAuth2Token
-{
 #if !defined(TWITCH_TESTS_OAUTH_CODE) || !defined(TWITCH_TESTS_CLIENT_IDENTIFIER) || !defined(TWITCH_TESTS_CLIENT_SECRET) || !defined(TWITCH_TESTS_OAUTH_REDIRECT_URL)
 #warning skipping testOAuth2Token
 #else
-	NSString *code = TWITCH_TESTS_OAUTH_CODE;
-	NSString *clientIdentifer = TWITCH_TESTS_CLIENT_IDENTIFIER;
-	NSString *clientSecret = TWITCH_TESTS_CLIENT_SECRET;
-	NSURL *redirectURL = TWITCH_TESTS_OAUTH_REDIRECT_URL;
+- (void)testOAuth2Token
+{
+	XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
 	
-	TwitchOAuth2Request *request = [[TwitchOAuth2Request alloc] initWithCode:code clientIdentifer:clientIdentifer clientSecret:clientSecret redirectURL:redirectURL];
+	NSArray *scopes = @[
+//		TwitchScopeUserRead,
+//		TwitchScopeUserBlocksEdit,
+//		TwitchScopeUserBlocksRead,
+//		TwitchScopeUserFollowsEdit,
+		TwitchScopeChannelRead,
+//		TwitchScopeChannelEditor,
+		TwitchScopeChannelCommercial,
+//		TwitchScopeChannelStream,
+//		TwitchScopeChannelSubscriptions,
+//		TwitchScopeUserSubscriptions,
+//		TwitchScopeChannelCheckSubscription,
+//		TwitchScopeChatLogin,
+	];
+	NSURL *URL = [TwitchOAuth2Request authorizationURLWithClientIdentifier:TWITCH_TESTS_CLIENT_IDENTIFIER redirectURL:TWITCH_TESTS_OAUTH_REDIRECT_URL scopes:scopes];
+
+	NSLog(@"%@", URL);
 	
-	dispatch_group_t group = dispatch_group_create();
-	dispatch_group_enter(group);
+	[NSWorkspace.sharedWorkspace openURL:URL];
+	
+#if 0
+	TwitchOAuth2Request *request = [[TwitchOAuth2Request alloc] initWithCode:TWITCH_TESTS_OAUTH_CODE clientIdentifer:TWITCH_TESTS_CLIENT_IDENTIFIER clientSecret:TWITCH_TESTS_CLIENT_SECRET redirectURL:TWITCH_TESTS_OAUTH_REDIRECT_URL];
+	
 	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) completionHandler:^(TwitchURLResponse *response, NSError *error) {
-		NSLog(@"%@ %@ %@", request, response, error);
+
+		XCTAssert(response != nil);
+		XCTAssert(error == nil);
+		XCTAssert([response isKindOfClass:TwitchOAuth2Response.class]);
 		
-		dispatch_group_leave(group);
+		TwitchOAuth2Response *OAuth2Response = (TwitchOAuth2Response *)response;
+		
+		XCTAssert(OAuth2Response.accessToken != nil);
+		XCTAssert(OAuth2Response.refreshToken != nil);
+		
+		[expectation fulfill];
 	}];
 	[self.queue addOperation:connection];
-	
-	dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+
+	[self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
+		[connection cancel];
+	}];
 #endif
 }
+#endif
 
-- (void)testOwnChannel
-{
 #if !defined(TWITCH_TESTS_OAUTH_ACCESS_TOKEN)
 #warning skipping testOwnChannel
 #else
+- (void)testOwnChannel
+{
+	XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+
 	TwitchOAuth2Authorization *auth = [[TwitchOAuth2Authorization alloc] initWithAccessToken:TWITCH_TESTS_OAUTH_ACCESS_TOKEN];
 	
 	TwitchChannelRequest *request = [[TwitchChannelRequest alloc] initWithAuthorization:auth];
 	
-	dispatch_group_t group = dispatch_group_create();
-	dispatch_group_enter(group);
-	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) completionHandler:^(TwitchURLResponse *response, NSError *error) {
-		NSLog(@"%@ %@ %@", request, response, error);
+	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_main_queue() completionHandler:^(TwitchURLResponse *response, NSError *error) {
 		
-		dispatch_group_leave(group);
+		XCTAssert(response != nil);
+		XCTAssert(error == nil);
+		XCTAssert([response isKindOfClass:TwitchChannelResponse.class]);
+		
+		TwitchChannelResponse *channelResponse = (TwitchChannelResponse *)response;
+		
+		XCTAssert(channelResponse.streamKey != nil);
+
+		[expectation fulfill];
 	}];
 	[self.queue addOperation:connection];
 	
-	dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-#endif
+	[self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
+		[connection cancel];
+	}];
 }
+#endif
 
-- (void)testChannel
+- (void)testPublicChannel
 {
+	XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+	
 	TwitchChannelRequest *request = [[TwitchChannelRequest alloc] initWithUser:@"amazHS"];
 	
-	dispatch_group_t group = dispatch_group_create();
-	dispatch_group_enter(group);
-	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) completionHandler:^(TwitchURLResponse *response, NSError *error) {
-		NSLog(@"%@ %@ %@", request, response, error);
+	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:dispatch_get_main_queue() completionHandler:^(TwitchURLResponse *response, NSError *error) {
+
+		XCTAssert(response != nil);
+		XCTAssert(error == nil);
+		XCTAssert([response isKindOfClass:TwitchChannelResponse.class]);
 		
-		dispatch_group_leave(group);
+		[expectation fulfill];
 	}];
 	[self.queue addOperation:connection];
 	
-	dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+	[self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
+		[connection cancel];
+	}];
 }
 
 @end

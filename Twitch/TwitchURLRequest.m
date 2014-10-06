@@ -12,7 +12,7 @@
 
 @implementation TwitchURLRequest
 
-+ (NSData *)URLEncodedDataWithParameters:(NSDictionary *)parameters
++ (NSString *)URLEncodedStringWithParameters:(NSDictionary *)parameters
 {
 	NSMutableString *string = [NSMutableString string];
 	for(NSString *key in parameters)
@@ -24,12 +24,17 @@
 			[string appendString:@"&"];
 		}
 		
-		[string appendString:[key stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+		[string appendString:[key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 		[string appendString:@"="];
-		[string appendString:[object stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+		[string appendString:[object stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 	}
-	NSLog(@"%@", string);
-	return [string dataUsingEncoding:NSASCIIStringEncoding];
+	
+	return string;
+}
+
++ (NSData *)URLEncodedDataWithParameters:(NSDictionary *)parameters
+{
+	return [[self URLEncodedStringWithParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (instancetype)initWithURL:(NSURL *)URL authorization:(id<TwitchAuthorization>)authorization

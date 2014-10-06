@@ -1,6 +1,6 @@
 #import "TwitchJSONResponse.h"
 
-@interface TwitchOAuthResponse : TwitchJSONResponse
+@interface TwitchOAuth2Response : TwitchJSONResponse
 
 @property (nonatomic, copy, readonly) NSString *accessToken;
 @property (nonatomic, copy, readonly) NSString *refreshToken;

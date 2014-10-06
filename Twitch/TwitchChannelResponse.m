@@ -74,7 +74,6 @@
 		NSString *streamKey = JSON[@"stream_key"];
 		if([streamKey isKindOfClass:NSString.class])
 		{
-			NSLog(@"Stream Key: %@", streamKey);
 			self.streamKey = streamKey;
 		}
 		

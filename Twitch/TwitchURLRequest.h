@@ -5,6 +5,7 @@
 
 @interface TwitchURLRequest : NSObject
 
++ (NSString *)URLEncodedStringWithParameters:(NSDictionary *)parameters;
 + (NSData *)URLEncodedDataWithParameters:(NSDictionary *)parameters;
 
 - (instancetype)initWithURL:(NSURL *)URL authorization:(id<TwitchAuthorization>)authorization;

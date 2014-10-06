@@ -1,7 +1,7 @@
-#import "TwitchOAuthResponse.h"
+#import "TwitchOAuth2Response.h"
 
 
-@interface TwitchOAuthResponse ()
+@interface TwitchOAuth2Response ()
 
 @property (nonatomic, copy) NSString *accessToken;
 @property (nonatomic, copy) NSString *refreshToken;
@@ -10,7 +10,7 @@
 @end
 
 
-@implementation TwitchOAuthResponse
+@implementation TwitchOAuth2Response
 
 - (instancetype)initWithJSON:(NSDictionary *)JSON error:(NSError **)error
 {

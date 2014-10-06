@@ -1,6 +1,6 @@
 #import "TwitchOAuth2Request.h"
 
-#import "TwitchOAuthResponse.h"
+#import "TwitchOAuth2Response.h"
 
 @interface TwitchOAuth2Request ()
 
@@ -13,6 +13,24 @@
 
 
 @implementation TwitchOAuth2Request
+
++ (NSURL *)authorizationURLWithClientIdentifier:(NSString *)clientIdentifier redirectURL:(NSURL *)redirectURL scopes:(NSArray *)scopes
+{
+	NSString *scopeString = [scopes componentsJoinedByString:@" "];
+	
+	NSDictionary *parameters = @{
+		@"response_type": @"code",
+		@"client_id": clientIdentifier,
+		@"redirect_uri": redirectURL.absoluteString,
+		@"scope": scopeString,
+	};
+
+	NSURLComponents *URLComponents = [[NSURLComponents alloc] initWithString:@"https://api.twitch.tv/kraken/oauth2/authorize"];
+
+	URLComponents.percentEncodedQuery = [self URLEncodedStringWithParameters:parameters];
+	
+	return URLComponents.URL;
+}
 
 - (instancetype)initWithCode:(NSString *)code clientIdentifer:(NSString *)clientIdentifier clientSecret:(NSString *)clientSecret redirectURL:(NSURL*)redirectURL
 {
@@ -30,7 +48,7 @@
 
 - (Class)responseClass
 {
-	return TwitchOAuthResponse.class;
+	return TwitchOAuth2Response.class;
 }
 
 - (NSMutableURLRequest *)URLRequest
