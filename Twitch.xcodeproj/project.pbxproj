@@ -7,43 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5017985D19E32309001DAA09 /* TwitchScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 5017985B19E32309001DAA09 /* TwitchScope.h */; };
+		5017985D19E32309001DAA09 /* TwitchScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 5017985B19E32309001DAA09 /* TwitchScope.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5017985E19E32309001DAA09 /* TwitchScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017985C19E32309001DAA09 /* TwitchScope.m */; };
-		5017988719E337E9001DAA09 /* TwitchChannelCommercialRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5017988519E337E9001DAA09 /* TwitchChannelCommercialRequest.h */; };
+		5017988719E337E9001DAA09 /* TwitchChannelCommercialRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5017988519E337E9001DAA09 /* TwitchChannelCommercialRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5017988819E337E9001DAA09 /* TwitchChannelCommercialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017988619E337E9001DAA09 /* TwitchChannelCommercialRequest.m */; };
+		5017988F19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5017988D19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5017989019E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017988E19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.m */; };
+		5017989319E33F52001DAA09 /* TwitchAuthorizationStatusResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5017989119E33F52001DAA09 /* TwitchAuthorizationStatusResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5017989419E33F52001DAA09 /* TwitchAuthorizationStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017989219E33F52001DAA09 /* TwitchAuthorizationStatusResponse.m */; };
 		504343BD19D3E9300046D9F8 /* Twitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343BC19D3E9300046D9F8 /* Twitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343C319D3E9300046D9F8 /* Twitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504343B719D3E9300046D9F8 /* Twitch.framework */; };
-		504343CA19D3E9300046D9F8 /* TwitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343C919D3E9300046D9F8 /* TwitchTests.m */; };
-		504343D519D3EA120046D9F8 /* TwitchIngest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343D319D3EA120046D9F8 /* TwitchIngest.h */; };
+		504343D519D3EA120046D9F8 /* TwitchIngest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343D319D3EA120046D9F8 /* TwitchIngest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343D619D3EA120046D9F8 /* TwitchIngest.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343D419D3EA120046D9F8 /* TwitchIngest.m */; };
-		504343DD19D3F1800046D9F8 /* TwitchURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343DB19D3F1800046D9F8 /* TwitchURLConnection.h */; };
+		504343DD19D3F1800046D9F8 /* TwitchURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343DB19D3F1800046D9F8 /* TwitchURLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343DE19D3F1800046D9F8 /* TwitchURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343DC19D3F1800046D9F8 /* TwitchURLConnection.m */; };
-		504343E119D3F8200046D9F8 /* TwitchURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343DF19D3F8200046D9F8 /* TwitchURLRequest.h */; };
+		504343E119D3F8200046D9F8 /* TwitchURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343DF19D3F8200046D9F8 /* TwitchURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343E219D3F8200046D9F8 /* TwitchURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343E019D3F8200046D9F8 /* TwitchURLRequest.m */; };
 		504343E519D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343E319D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h */; };
 		504343E619D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343E419D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m */; };
-		504343E919D401DE0046D9F8 /* TwitchURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343E719D401DE0046D9F8 /* TwitchURLResponse.h */; };
+		504343E919D401DE0046D9F8 /* TwitchURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343E719D401DE0046D9F8 /* TwitchURLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343EA19D401DE0046D9F8 /* TwitchURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343E819D401DE0046D9F8 /* TwitchURLResponse.m */; };
-		504343F619D40F090046D9F8 /* TwitchJSONResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343F419D40F090046D9F8 /* TwitchJSONResponse.h */; };
+		504343F619D40F090046D9F8 /* TwitchJSONResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343F419D40F090046D9F8 /* TwitchJSONResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343F719D40F090046D9F8 /* TwitchJSONResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343F519D40F090046D9F8 /* TwitchJSONResponse.m */; };
-		504343FA19D40F230046D9F8 /* TwitchJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343F819D40F230046D9F8 /* TwitchJSONRequest.h */; };
+		504343FA19D40F230046D9F8 /* TwitchJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343F819D40F230046D9F8 /* TwitchJSONRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343FB19D40F230046D9F8 /* TwitchJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343F919D40F230046D9F8 /* TwitchJSONRequest.m */; };
-		5043440019D41C180046D9F8 /* TwitchIngestRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343FE19D41C180046D9F8 /* TwitchIngestRequest.h */; };
-		5043440119D41C180046D9F8 /* TwitchIngestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343FF19D41C180046D9F8 /* TwitchIngestRequest.m */; };
-		5043440419D41DB80046D9F8 /* TwitchIngestResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043440219D41DB80046D9F8 /* TwitchIngestResponse.h */; };
-		5043440519D41DB80046D9F8 /* TwitchIngestResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043440319D41DB80046D9F8 /* TwitchIngestResponse.m */; };
-		5043440819D4261F0046D9F8 /* TwitchOAuth2Request.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043440619D4261F0046D9F8 /* TwitchOAuth2Request.h */; };
+		5043440019D41C180046D9F8 /* TwitchIngestsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343FE19D41C180046D9F8 /* TwitchIngestsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5043440119D41C180046D9F8 /* TwitchIngestsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343FF19D41C180046D9F8 /* TwitchIngestsRequest.m */; };
+		5043440419D41DB80046D9F8 /* TwitchIngestsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043440219D41DB80046D9F8 /* TwitchIngestsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5043440519D41DB80046D9F8 /* TwitchIngestsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043440319D41DB80046D9F8 /* TwitchIngestsResponse.m */; };
+		5043440819D4261F0046D9F8 /* TwitchOAuth2Request.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043440619D4261F0046D9F8 /* TwitchOAuth2Request.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043440919D4261F0046D9F8 /* TwitchOAuth2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043440719D4261F0046D9F8 /* TwitchOAuth2Request.m */; };
-		5043440D19D431A40046D9F8 /* TwitchOAuth2Response.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043440B19D431A40046D9F8 /* TwitchOAuth2Response.h */; };
+		5043440D19D431A40046D9F8 /* TwitchOAuth2Response.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043440B19D431A40046D9F8 /* TwitchOAuth2Response.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043440E19D431A40046D9F8 /* TwitchOAuth2Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043440C19D431A40046D9F8 /* TwitchOAuth2Response.m */; };
-		5043441219D43AEC0046D9F8 /* TwitchChannelRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441019D43AEC0046D9F8 /* TwitchChannelRequest.h */; };
+		5043441219D43AEC0046D9F8 /* TwitchChannelRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441019D43AEC0046D9F8 /* TwitchChannelRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043441319D43AEC0046D9F8 /* TwitchChannelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441119D43AEC0046D9F8 /* TwitchChannelRequest.m */; };
-		5043441619D43F160046D9F8 /* TwitchChannelResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441419D43F160046D9F8 /* TwitchChannelResponse.h */; };
+		5043441619D43F160046D9F8 /* TwitchChannelResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441419D43F160046D9F8 /* TwitchChannelResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043441719D43F160046D9F8 /* TwitchChannelResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441519D43F160046D9F8 /* TwitchChannelResponse.m */; };
-		5043441A19D43FA70046D9F8 /* TwitchAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441819D43FA70046D9F8 /* TwitchAuthorization.h */; };
-		5043441B19D43FA70046D9F8 /* TwitchAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441919D43FA70046D9F8 /* TwitchAuthorization.m */; };
-		5043441E19D440660046D9F8 /* TwitchOAuth2Authorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441C19D440660046D9F8 /* TwitchOAuth2Authorization.h */; };
-		5043441F19D440660046D9F8 /* TwitchOAuth2Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441D19D440660046D9F8 /* TwitchOAuth2Authorization.m */; };
+		5043441A19D43FA70046D9F8 /* TwitchAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441819D43FA70046D9F8 /* TwitchAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5043441E19D440660046D9F8 /* TwitchAccessTokenAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5043441F19D440660046D9F8 /* TwitchAccessTokenAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */; };
+		506CE02A19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE02819E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		506CE02B19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 506CE02919E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m */; };
+		506CE02E19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE02C19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		506CE02F19E5B2C100A0D8BC /* TwitchSearchGamesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 506CE02D19E5B2C100A0D8BC /* TwitchSearchGamesRequest.m */; };
+		506CE03319E5B9CE00A0D8BC /* TwitchSearchGamesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE03119E5B9CE00A0D8BC /* TwitchSearchGamesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		506CE03419E5B9CE00A0D8BC /* TwitchSearchGamesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 506CE03219E5B9CE00A0D8BC /* TwitchSearchGamesResponse.m */; };
+		506CE03719E6726400A0D8BC /* TwitchGame.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE03519E6726400A0D8BC /* TwitchGame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		506CE03819E6726400A0D8BC /* TwitchGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 506CE03619E6726400A0D8BC /* TwitchGame.m */; };
+		508227E619E471CF004A62B9 /* TwitchPublicAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227E519E471CF004A62B9 /* TwitchPublicAPITest.m */; };
+		508227E919E4730D004A62B9 /* TwitchClientIdentifierAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 508227E719E4730D004A62B9 /* TwitchClientIdentifierAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		508227EA19E4730D004A62B9 /* TwitchClientIdentifierAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227E819E4730D004A62B9 /* TwitchClientIdentifierAuthorization.m */; };
+		508227EC19E484D2004A62B9 /* TwitchAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227EB19E484D2004A62B9 /* TwitchAuthorization.m */; };
+		508227EF19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 508227ED19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		508227F019E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227EE19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.m */; };
+		508227F319E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 508227F119E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		508227F419E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227F219E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.m */; };
+		508227F619E48F91004A62B9 /* TwitchStreamingAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227F519E48F91004A62B9 /* TwitchStreamingAPITest.m */; };
+		508227F819E4926E004A62B9 /* TwitchLoginAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 508227F719E4926E004A62B9 /* TwitchLoginAPITest.m */; };
 		50E0764319E2F2F500664103 /* TwitchAuth.h in Resources */ = {isa = PBXBuildFile; fileRef = 50E0764219E2F2F500664103 /* TwitchAuth.h */; };
 /* End PBXBuildFile section */
 
@@ -62,12 +82,15 @@
 		5017985C19E32309001DAA09 /* TwitchScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchScope.m; sourceTree = "<group>"; };
 		5017988519E337E9001DAA09 /* TwitchChannelCommercialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchChannelCommercialRequest.h; sourceTree = "<group>"; };
 		5017988619E337E9001DAA09 /* TwitchChannelCommercialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchChannelCommercialRequest.m; sourceTree = "<group>"; };
+		5017988D19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAuthorizationStatusRequest.h; sourceTree = "<group>"; };
+		5017988E19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchAuthorizationStatusRequest.m; sourceTree = "<group>"; };
+		5017989119E33F52001DAA09 /* TwitchAuthorizationStatusResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAuthorizationStatusResponse.h; sourceTree = "<group>"; };
+		5017989219E33F52001DAA09 /* TwitchAuthorizationStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchAuthorizationStatusResponse.m; sourceTree = "<group>"; };
 		504343B719D3E9300046D9F8 /* Twitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Twitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		504343BB19D3E9300046D9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		504343BC19D3E9300046D9F8 /* Twitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Twitch.h; sourceTree = "<group>"; };
 		504343C219D3E9300046D9F8 /* TwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504343C819D3E9300046D9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		504343C919D3E9300046D9F8 /* TwitchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitchTests.m; sourceTree = "<group>"; };
 		504343D319D3EA120046D9F8 /* TwitchIngest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchIngest.h; sourceTree = "<group>"; };
 		504343D419D3EA120046D9F8 /* TwitchIngest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchIngest.m; sourceTree = "<group>"; };
 		504343DB19D3F1800046D9F8 /* TwitchURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchURLConnection.h; sourceTree = "<group>"; };
@@ -82,10 +105,10 @@
 		504343F519D40F090046D9F8 /* TwitchJSONResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchJSONResponse.m; sourceTree = "<group>"; };
 		504343F819D40F230046D9F8 /* TwitchJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchJSONRequest.h; sourceTree = "<group>"; };
 		504343F919D40F230046D9F8 /* TwitchJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchJSONRequest.m; sourceTree = "<group>"; };
-		504343FE19D41C180046D9F8 /* TwitchIngestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchIngestRequest.h; sourceTree = "<group>"; };
-		504343FF19D41C180046D9F8 /* TwitchIngestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchIngestRequest.m; sourceTree = "<group>"; };
-		5043440219D41DB80046D9F8 /* TwitchIngestResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchIngestResponse.h; sourceTree = "<group>"; };
-		5043440319D41DB80046D9F8 /* TwitchIngestResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchIngestResponse.m; sourceTree = "<group>"; };
+		504343FE19D41C180046D9F8 /* TwitchIngestsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchIngestsRequest.h; sourceTree = "<group>"; };
+		504343FF19D41C180046D9F8 /* TwitchIngestsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchIngestsRequest.m; sourceTree = "<group>"; };
+		5043440219D41DB80046D9F8 /* TwitchIngestsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchIngestsResponse.h; sourceTree = "<group>"; };
+		5043440319D41DB80046D9F8 /* TwitchIngestsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchIngestsResponse.m; sourceTree = "<group>"; };
 		5043440619D4261F0046D9F8 /* TwitchOAuth2Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchOAuth2Request.h; sourceTree = "<group>"; };
 		5043440719D4261F0046D9F8 /* TwitchOAuth2Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchOAuth2Request.m; sourceTree = "<group>"; };
 		5043440B19D431A40046D9F8 /* TwitchOAuth2Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchOAuth2Response.h; sourceTree = "<group>"; };
@@ -95,9 +118,26 @@
 		5043441419D43F160046D9F8 /* TwitchChannelResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchChannelResponse.h; sourceTree = "<group>"; };
 		5043441519D43F160046D9F8 /* TwitchChannelResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchChannelResponse.m; sourceTree = "<group>"; };
 		5043441819D43FA70046D9F8 /* TwitchAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAuthorization.h; sourceTree = "<group>"; };
-		5043441919D43FA70046D9F8 /* TwitchAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchAuthorization.m; sourceTree = "<group>"; };
-		5043441C19D440660046D9F8 /* TwitchOAuth2Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchOAuth2Authorization.h; sourceTree = "<group>"; };
-		5043441D19D440660046D9F8 /* TwitchOAuth2Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchOAuth2Authorization.m; sourceTree = "<group>"; };
+		5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAccessTokenAuthorization.h; sourceTree = "<group>"; };
+		5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchAccessTokenAuthorization.m; sourceTree = "<group>"; };
+		506CE02819E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchChannelUpdateRequest.h; sourceTree = "<group>"; };
+		506CE02919E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchChannelUpdateRequest.m; sourceTree = "<group>"; };
+		506CE02C19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchSearchGamesRequest.h; sourceTree = "<group>"; };
+		506CE02D19E5B2C100A0D8BC /* TwitchSearchGamesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchSearchGamesRequest.m; sourceTree = "<group>"; };
+		506CE03119E5B9CE00A0D8BC /* TwitchSearchGamesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchSearchGamesResponse.h; sourceTree = "<group>"; };
+		506CE03219E5B9CE00A0D8BC /* TwitchSearchGamesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchSearchGamesResponse.m; sourceTree = "<group>"; };
+		506CE03519E6726400A0D8BC /* TwitchGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchGame.h; sourceTree = "<group>"; };
+		506CE03619E6726400A0D8BC /* TwitchGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchGame.m; sourceTree = "<group>"; };
+		508227E519E471CF004A62B9 /* TwitchPublicAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchPublicAPITest.m; sourceTree = "<group>"; };
+		508227E719E4730D004A62B9 /* TwitchClientIdentifierAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchClientIdentifierAuthorization.h; sourceTree = "<group>"; };
+		508227E819E4730D004A62B9 /* TwitchClientIdentifierAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchClientIdentifierAuthorization.m; sourceTree = "<group>"; };
+		508227EB19E484D2004A62B9 /* TwitchAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchAuthorization.m; sourceTree = "<group>"; };
+		508227ED19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TwitchURLConnection+SharedAuthorization.h"; sourceTree = "<group>"; };
+		508227EE19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TwitchURLConnection+SharedAuthorization.m"; sourceTree = "<group>"; };
+		508227F119E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TwitchURLConnection+SharedOperationQueue.h"; sourceTree = "<group>"; };
+		508227F219E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TwitchURLConnection+SharedOperationQueue.m"; sourceTree = "<group>"; };
+		508227F519E48F91004A62B9 /* TwitchStreamingAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchStreamingAPITest.m; sourceTree = "<group>"; };
+		508227F719E4926E004A62B9 /* TwitchLoginAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchLoginAPITest.m; sourceTree = "<group>"; };
 		50E0764219E2F2F500664103 /* TwitchAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAuth.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,13 +187,16 @@
 				5043440F19D43AAF0046D9F8 /* Channel */,
 				504343EF19D403700046D9F8 /* Ingest */,
 				5043440A19D427880046D9F8 /* OAuth2 */,
+				506CE03019E5B59B00A0D8BC /* Search */,
 				504343E319D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h */,
 				504343E419D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m */,
 				504343BA19D3E9300046D9F8 /* Supporting Files */,
 				5043441819D43FA70046D9F8 /* TwitchAuthorization.h */,
-				5043441919D43FA70046D9F8 /* TwitchAuthorization.m */,
-				5043441C19D440660046D9F8 /* TwitchOAuth2Authorization.h */,
-				5043441D19D440660046D9F8 /* TwitchOAuth2Authorization.m */,
+				508227EB19E484D2004A62B9 /* TwitchAuthorization.m */,
+				5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */,
+				5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */,
+				508227E719E4730D004A62B9 /* TwitchClientIdentifierAuthorization.h */,
+				508227E819E4730D004A62B9 /* TwitchClientIdentifierAuthorization.m */,
 			);
 			path = Twitch;
 			sourceTree = "<group>";
@@ -170,7 +213,9 @@
 			isa = PBXGroup;
 			children = (
 				50E0764219E2F2F500664103 /* TwitchAuth.h */,
-				504343C919D3E9300046D9F8 /* TwitchTests.m */,
+				508227E519E471CF004A62B9 /* TwitchPublicAPITest.m */,
+				508227F719E4926E004A62B9 /* TwitchLoginAPITest.m */,
+				508227F519E48F91004A62B9 /* TwitchStreamingAPITest.m */,
 				504343C719D3E9300046D9F8 /* Supporting Files */,
 			);
 			path = TwitchTests;
@@ -189,10 +234,10 @@
 			children = (
 				504343D319D3EA120046D9F8 /* TwitchIngest.h */,
 				504343D419D3EA120046D9F8 /* TwitchIngest.m */,
-				504343FE19D41C180046D9F8 /* TwitchIngestRequest.h */,
-				504343FF19D41C180046D9F8 /* TwitchIngestRequest.m */,
-				5043440219D41DB80046D9F8 /* TwitchIngestResponse.h */,
-				5043440319D41DB80046D9F8 /* TwitchIngestResponse.m */,
+				504343FE19D41C180046D9F8 /* TwitchIngestsRequest.h */,
+				504343FF19D41C180046D9F8 /* TwitchIngestsRequest.m */,
+				5043440219D41DB80046D9F8 /* TwitchIngestsResponse.h */,
+				5043440319D41DB80046D9F8 /* TwitchIngestsResponse.m */,
 			);
 			name = Ingest;
 			sourceTree = "<group>";
@@ -213,6 +258,10 @@
 			children = (
 				504343DB19D3F1800046D9F8 /* TwitchURLConnection.h */,
 				504343DC19D3F1800046D9F8 /* TwitchURLConnection.m */,
+				508227ED19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.h */,
+				508227EE19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.m */,
+				508227F119E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.h */,
+				508227F219E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.m */,
 				504343DF19D3F8200046D9F8 /* TwitchURLRequest.h */,
 				504343E019D3F8200046D9F8 /* TwitchURLRequest.m */,
 				504343E719D401DE0046D9F8 /* TwitchURLResponse.h */,
@@ -230,6 +279,10 @@
 				5043440C19D431A40046D9F8 /* TwitchOAuth2Response.m */,
 				5017985B19E32309001DAA09 /* TwitchScope.h */,
 				5017985C19E32309001DAA09 /* TwitchScope.m */,
+				5017988D19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.h */,
+				5017988E19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.m */,
+				5017989119E33F52001DAA09 /* TwitchAuthorizationStatusResponse.h */,
+				5017989219E33F52001DAA09 /* TwitchAuthorizationStatusResponse.m */,
 			);
 			name = OAuth2;
 			sourceTree = "<group>";
@@ -237,14 +290,29 @@
 		5043440F19D43AAF0046D9F8 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				5017988519E337E9001DAA09 /* TwitchChannelCommercialRequest.h */,
+				5017988619E337E9001DAA09 /* TwitchChannelCommercialRequest.m */,
 				5043441019D43AEC0046D9F8 /* TwitchChannelRequest.h */,
 				5043441119D43AEC0046D9F8 /* TwitchChannelRequest.m */,
 				5043441419D43F160046D9F8 /* TwitchChannelResponse.h */,
 				5043441519D43F160046D9F8 /* TwitchChannelResponse.m */,
-				5017988519E337E9001DAA09 /* TwitchChannelCommercialRequest.h */,
-				5017988619E337E9001DAA09 /* TwitchChannelCommercialRequest.m */,
+				506CE02819E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h */,
+				506CE02919E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m */,
 			);
 			name = Channel;
+			sourceTree = "<group>";
+		};
+		506CE03019E5B59B00A0D8BC /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				506CE03519E6726400A0D8BC /* TwitchGame.h */,
+				506CE03619E6726400A0D8BC /* TwitchGame.m */,
+				506CE02C19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h */,
+				506CE02D19E5B2C100A0D8BC /* TwitchSearchGamesRequest.m */,
+				506CE03119E5B9CE00A0D8BC /* TwitchSearchGamesResponse.h */,
+				506CE03219E5B9CE00A0D8BC /* TwitchSearchGamesResponse.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,24 +322,33 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506CE03319E5B9CE00A0D8BC /* TwitchSearchGamesResponse.h in Headers */,
 				504343BD19D3E9300046D9F8 /* Twitch.h in Headers */,
 				504343DD19D3F1800046D9F8 /* TwitchURLConnection.h in Headers */,
+				506CE02E19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h in Headers */,
+				508227E919E4730D004A62B9 /* TwitchClientIdentifierAuthorization.h in Headers */,
 				5043440D19D431A40046D9F8 /* TwitchOAuth2Response.h in Headers */,
+				508227EF19E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.h in Headers */,
+				508227F319E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.h in Headers */,
 				5043441219D43AEC0046D9F8 /* TwitchChannelRequest.h in Headers */,
 				504343E919D401DE0046D9F8 /* TwitchURLResponse.h in Headers */,
 				504343D519D3EA120046D9F8 /* TwitchIngest.h in Headers */,
-				5043440419D41DB80046D9F8 /* TwitchIngestResponse.h in Headers */,
-				5043440019D41C180046D9F8 /* TwitchIngestRequest.h in Headers */,
-				5043441E19D440660046D9F8 /* TwitchOAuth2Authorization.h in Headers */,
+				5043440419D41DB80046D9F8 /* TwitchIngestsResponse.h in Headers */,
+				5043440019D41C180046D9F8 /* TwitchIngestsRequest.h in Headers */,
+				5043441E19D440660046D9F8 /* TwitchAccessTokenAuthorization.h in Headers */,
 				5043441619D43F160046D9F8 /* TwitchChannelResponse.h in Headers */,
 				504343E119D3F8200046D9F8 /* TwitchURLRequest.h in Headers */,
 				504343F619D40F090046D9F8 /* TwitchJSONResponse.h in Headers */,
 				5017988719E337E9001DAA09 /* TwitchChannelCommercialRequest.h in Headers */,
 				504343E519D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h in Headers */,
 				5043440819D4261F0046D9F8 /* TwitchOAuth2Request.h in Headers */,
+				506CE03719E6726400A0D8BC /* TwitchGame.h in Headers */,
+				506CE02A19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h in Headers */,
 				504343FA19D40F230046D9F8 /* TwitchJSONRequest.h in Headers */,
+				5017989319E33F52001DAA09 /* TwitchAuthorizationStatusResponse.h in Headers */,
 				5017985D19E32309001DAA09 /* TwitchScope.h in Headers */,
 				5043441A19D43FA70046D9F8 /* TwitchAuthorization.h in Headers */,
+				5017988F19E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,22 +449,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5017989019E33E5C001DAA09 /* TwitchAuthorizationStatusRequest.m in Sources */,
 				504343EA19D401DE0046D9F8 /* TwitchURLResponse.m in Sources */,
 				504343F719D40F090046D9F8 /* TwitchJSONResponse.m in Sources */,
+				508227F419E486B6004A62B9 /* TwitchURLConnection+SharedOperationQueue.m in Sources */,
+				506CE02F19E5B2C100A0D8BC /* TwitchSearchGamesRequest.m in Sources */,
 				5017985E19E32309001DAA09 /* TwitchScope.m in Sources */,
+				506CE03819E6726400A0D8BC /* TwitchGame.m in Sources */,
+				508227EC19E484D2004A62B9 /* TwitchAuthorization.m in Sources */,
 				504343DE19D3F1800046D9F8 /* TwitchURLConnection.m in Sources */,
 				504343E219D3F8200046D9F8 /* TwitchURLRequest.m in Sources */,
-				5043441B19D43FA70046D9F8 /* TwitchAuthorization.m in Sources */,
 				504343E619D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m in Sources */,
-				5043440519D41DB80046D9F8 /* TwitchIngestResponse.m in Sources */,
-				5043441F19D440660046D9F8 /* TwitchOAuth2Authorization.m in Sources */,
+				506CE03419E5B9CE00A0D8BC /* TwitchSearchGamesResponse.m in Sources */,
+				5043440519D41DB80046D9F8 /* TwitchIngestsResponse.m in Sources */,
+				508227F019E4854B004A62B9 /* TwitchURLConnection+SharedAuthorization.m in Sources */,
+				5043441F19D440660046D9F8 /* TwitchAccessTokenAuthorization.m in Sources */,
 				5043441319D43AEC0046D9F8 /* TwitchChannelRequest.m in Sources */,
 				5017988819E337E9001DAA09 /* TwitchChannelCommercialRequest.m in Sources */,
+				5017989419E33F52001DAA09 /* TwitchAuthorizationStatusResponse.m in Sources */,
 				5043441719D43F160046D9F8 /* TwitchChannelResponse.m in Sources */,
 				5043440E19D431A40046D9F8 /* TwitchOAuth2Response.m in Sources */,
 				504343FB19D40F230046D9F8 /* TwitchJSONRequest.m in Sources */,
-				5043440119D41C180046D9F8 /* TwitchIngestRequest.m in Sources */,
+				5043440119D41C180046D9F8 /* TwitchIngestsRequest.m in Sources */,
+				506CE02B19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m in Sources */,
 				504343D619D3EA120046D9F8 /* TwitchIngest.m in Sources */,
+				508227EA19E4730D004A62B9 /* TwitchClientIdentifierAuthorization.m in Sources */,
 				5043440919D4261F0046D9F8 /* TwitchOAuth2Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +482,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504343CA19D3E9300046D9F8 /* TwitchTests.m in Sources */,
+				508227E619E471CF004A62B9 /* TwitchPublicAPITest.m in Sources */,
+				508227F819E4926E004A62B9 /* TwitchLoginAPITest.m in Sources */,
+				508227F619E48F91004A62B9 /* TwitchStreamingAPITest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

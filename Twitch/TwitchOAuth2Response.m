@@ -18,12 +18,11 @@
 	if(self != nil)
 	{
 		NSString *accessToken = JSON[@"access_token"];
-		if(accessToken == nil)
+		if(![accessToken isKindOfClass:NSString.class])
 		{
 			// TODO: error handling
 			return nil;
 		}
-		NSLog(@"%@", accessToken);
 		self.accessToken = accessToken;
 		
 		NSString *refreshToken = JSON[@"refresh_token"];

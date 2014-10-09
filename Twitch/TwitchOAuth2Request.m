@@ -28,14 +28,12 @@
 	NSURLComponents *URLComponents = [[NSURLComponents alloc] initWithString:@"https://api.twitch.tv/kraken/oauth2/authorize"];
 
 	URLComponents.percentEncodedQuery = [self URLEncodedStringWithParameters:parameters];
-	
 	return URLComponents.URL;
 }
 
 - (instancetype)initWithCode:(NSString *)code clientIdentifer:(NSString *)clientIdentifier clientSecret:(NSString *)clientSecret redirectURL:(NSURL*)redirectURL
 {
-	NSURL *URL = [NSURL URLWithString:@"https://api.twitch.tv/kraken/oauth2/token"];
-	self = [super initWithURL:URL authorization:nil];
+	self = [super init];
 	if(self != nil)
 	{
 		self.code = code;
@@ -49,6 +47,11 @@
 - (Class)responseClass
 {
 	return TwitchOAuth2Response.class;
+}
+
+- (NSURL *)URL
+{
+	return [NSURL URLWithString:@"https://api.twitch.tv/kraken/oauth2/token"];
 }
 
 - (NSMutableURLRequest *)URLRequest

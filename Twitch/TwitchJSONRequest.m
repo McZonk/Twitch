@@ -19,7 +19,7 @@
 {
 	NSMutableURLRequest *URLRequest = super.URLRequest;
 	
-	[URLRequest addValue:self.class.acceptValue forHTTPHeaderField:@"Accept"];
+	[URLRequest setValue:self.class.acceptValue forHTTPHeaderField:@"Accept"];
 	
 	return URLRequest;
 }

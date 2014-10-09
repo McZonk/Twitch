@@ -14,6 +14,35 @@ FOUNDATION_EXPORT double TwitchVersionNumber;
 //! Project version string for Twitch.
 FOUNDATION_EXPORT const unsigned char TwitchVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Twitch/PublicHeader.h>
 
+#import "TwitchURLConnection.h"
+#import "TwitchURLConnection+SharedAuthorization.h"
+#import "TwitchURLConnection+SharedOperationQueue.h"
+#import "TwitchURLRequest.h"
+#import "TwitchURLResponse.h"
 
+#import "TwitchJSONRequest.h"
+#import "TwitchJSONResponse.h"
+
+#import "TwitchChannelCommercialRequest.h"
+#import "TwitchChannelRequest.h"
+#import "TwitchChannelResponse.h"
+#import "TwitchChannelUpdateRequest.h"
+
+#import "TwitchIngest.h"
+#import "TwitchIngestsRequest.h"
+#import "TwitchIngestsResponse.h"
+
+#import "TwitchOAuth2Request.h"
+#import "TwitchOAuth2Response.h"
+#import "TwitchScope.h"
+#import "TwitchAuthorizationStatusRequest.h"
+#import "TwitchAuthorizationStatusResponse.h"
+
+#import "TwitchAuthorization.h"
+#import "TwitchClientIdentifierAuthorization.h"
+#import "TwitchAccessTokenAuthorization.h"
+
+#import "TwitchGame.h"
+#import "TwitchSearchGamesRequest.h"
+#import "TwitchSearchGamesResponse.h"

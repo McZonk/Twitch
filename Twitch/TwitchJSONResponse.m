@@ -27,6 +27,8 @@
 	if(self != nil)
 	{
 		self.JSON = JSON;
+		
+		NSLog(@"%@", JSON);
 	}
 	return self;
 }

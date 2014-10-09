@@ -1,7 +1,7 @@
 #import "TwitchJSONResponse.h"
 
 
-@interface TwitchIngestResponse : TwitchJSONResponse
+@interface TwitchIngestsResponse : TwitchJSONResponse
 
 @property (nonatomic, copy, readonly) NSArray *ingests;
 

@@ -5,6 +5,7 @@
 @property (nonatomic, assign) long long identifier;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *game;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *email;
@@ -51,6 +52,12 @@
 		if([game isKindOfClass:NSString.class])
 		{
 			self.game = game;
+		}
+		
+		NSString *status = JSON[@"status"];
+		if([status isKindOfClass:NSString.class])
+		{
+			self.status = status;
 		}
 		
 		NSString *title = JSON[@"title"];

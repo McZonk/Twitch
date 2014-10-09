@@ -1,6 +1,8 @@
 #import "TwitchURLConnection.h"
 
 #import "NSHTTPURLResponse+TwitchHeaderFields.h"
+#import "TwitchAuthorization.h"
+#import "TwitchURLConnection+SharedAuthorization.h"
 #import "TwitchURLRequest.h"
 #import "TwitchURLResponse.h"
 
@@ -11,48 +13,32 @@
 @property (assign) BOOL isFinished;
 
 @property (copy) TwitchURLConnectionCompletionHandler completionHandler;
-@property (copy) TwitchURLConnectionProgressHandler progressHandler;
-
-// only accessed in the NSURL Connection thread
-@property (nonatomic, strong) NSURLConnection *URLConnection;
-@property (nonatomic, strong) NSHTTPURLResponse *URLResponse;
-@property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, strong) NSNumber *contentLength;
 
 // only set in init
 @property (nonatomic, strong) TwitchURLRequest *request;
+@property (nonatomic, copy) id<TwitchAuthorization> authorization;
 @property (nonatomic, strong) dispatch_queue_t queue;
 @property (nonatomic, strong) id<NSLocking> lock;
+
+@property (nonatomic, strong) NSURLSessionDataTask *task;
 
 @end
 
 
-
 @implementation TwitchURLConnection
 
-+ (NSThread *)connectionThread
++ (NSURLSession *)URLSession
 {
-	static NSThread *thread = nil;
+	static NSURLSession *URLSession = nil;
 	
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		thread = [[NSThread alloc] initWithTarget:self selector:@selector(connectionThreadMain:) object:nil];
-		[thread start];
+		NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+		
+		URLSession = [NSURLSession sessionWithConfiguration:configuration];
 	});
 	
-	return thread;
-}
-
-+ (void)connectionThreadMain:(id)object
-{
-	@autoreleasepool
-	{
-		NSThread.currentThread.name = @"TwitchConnectionThread";
-		
-		NSRunLoop *runLoop = NSRunLoop.currentRunLoop;
-		[runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
-		[runLoop run];
-	}
+	return URLSession;
 }
 
 + (BOOL)automaticallyNotifiesObserversOfIsExecuting
@@ -67,15 +53,18 @@
 
 - (instancetype)initWithRequest:(TwitchURLRequest *)request queue:(dispatch_queue_t)queue completionHandler:(TwitchURLConnectionCompletionHandler)completionHandler
 {
-	return [self initWithRequest:request queue:queue progressHandler:nil completionHandler:completionHandler];
+	id<TwitchAuthorization> authorization = TwitchURLConnection.sharedAuthorization;
+	
+	return [self initWithRequest:request authorization:authorization queue:queue completionHandler:completionHandler];
 }
 
-- (instancetype)initWithRequest:(TwitchURLRequest *)request queue:(dispatch_queue_t)queue progressHandler:(TwitchURLConnectionProgressHandler)progressHandler completionHandler:(TwitchURLConnectionCompletionHandler)completionHandler
+- (instancetype)initWithRequest:(TwitchURLRequest *)request authorization:(id<TwitchAuthorization>)authorization queue:(dispatch_queue_t)queue completionHandler:(TwitchURLConnectionCompletionHandler)completionHandler
 {
 	self = [super init];
 	if(self != nil)
 	{
 		self.request = request;
+		self.authorization = authorization;
 		
 		if(queue == nil)
 		{
@@ -84,7 +73,6 @@
 		self.queue = queue;
 		
 		self.completionHandler = completionHandler;
-		self.progressHandler = progressHandler;
 		
 		self.lock = [[NSRecursiveLock alloc] init];
 	}
@@ -93,7 +81,7 @@
 
 - (void)dealloc
 {
-	
+	NSLog(@"%s %@", __FUNCTION__, self.request);
 }
 
 - (BOOL)isConcurrent
@@ -120,7 +108,67 @@
 		self.isExecuting = YES;
 		[self didChangeValueForKey:@"isExecuting"];
 		
-		[self performSelector:@selector(startURLConnection) onThread:self.class.connectionThread withObject:nil waitUntilDone:NO modes:@[ NSDefaultRunLoopMode ]];
+		NSMutableURLRequest *URLRequest = self.request.URLRequest;
+		
+		id<TwitchAuthorization> authorization = self.authorization;
+		NSDictionary *HTTPHeaders = authorization.HTTPHeaders;
+		for(NSString *key in HTTPHeaders)
+		{
+			if([URLRequest valueForHTTPHeaderField:key] == nil)
+			{
+				NSString *value = HTTPHeaders[key];
+				[URLRequest setValue:value forHTTPHeaderField:key];
+			}
+		}
+		
+		NSURLSession *URLSession = self.class.URLSession;
+		__weak typeof(self) weakself = self;
+		NSURLSessionDataTask *task = [URLSession dataTaskWithRequest:URLRequest completionHandler:^(NSData *data, NSURLResponse *URLResponse, NSError *error) {
+			typeof(self) self = weakself;
+			if(self == nil)
+			{
+				return;
+			}
+			
+			TwitchURLRequest *request = self.request;
+			TwitchURLResponse *response = nil;
+			
+			NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)URLResponse;
+			
+			NSInteger statusCode = HTTPResponse.statusCode;
+			if(statusCode >= 200 && statusCode <= 299)
+			{
+				Class responseClass = request.responseClass;
+				response = [[responseClass alloc] initWithData:data error:&error];
+				
+				if(response == nil && error == nil)
+				{
+					error = [NSError errorWithDomain:@"TODO" code:2 userInfo:nil];
+				}
+			}
+			else
+			{
+				NSString *localizedDescription = [NSHTTPURLResponse localizedStringForStatusCode:statusCode];
+				NSDictionary *userInfo = @{
+					NSLocalizedDescriptionKey: localizedDescription,
+				};
+				error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:userInfo];
+			}
+
+			TwitchURLConnectionCompletionHandler completionHandler = self.completionHandler;
+			if(completionHandler != nil)
+			{
+				dispatch_async(self.queue, ^{
+					completionHandler(response, error);
+
+					[self finish];
+				});
+			}
+
+		}];
+		self.task = task;
+		
+		[task resume];
 	}
 	[lock unlock];
 }
@@ -133,15 +181,15 @@
 	if(!self.isCancelled && !self.isFinished)
 	{
 		self.completionHandler = nil;
-		self.progressHandler = nil;
 		
 		[super cancel];
 		
 		if(self.isExecuting)
 		{
-			// only when we are already executing, we are allowed to cancel the connection, otherwise an exception might occur. This will also result in the following but already cancelled operatations of be started, but the first check in start check if the operation is cancelled.
-			[self performSelector:@selector(cancelURLConnection) onThread:self.class.connectionThread withObject:nil waitUntilDone:NO modes:@[ NSDefaultRunLoopMode ]];
+			[self.task cancel];
 		}
+		
+		[self finish];
 	}
 	
 	[lock unlock];
@@ -153,7 +201,6 @@
 	[lock lock];
 	
 	self.completionHandler = nil;
-	self.progressHandler = nil;
 	
 	// ensure only the changed states will be changed. Setting isExecuting = NO when it is already NO will cause an exception when the connection was cancelled before.
 	
@@ -184,146 +231,9 @@
 	[lock unlock];
 }
 
-- (void)startURLConnection
-{
-	id<NSLocking> lock = self.lock;
-	[lock lock];
-	
-	if(!self.isCancelled)
-	{
-		TwitchURLRequest *request = self.request;
-		
-		NSMutableURLRequest *URLRequest = request.URLRequest;
-		
-		NSURLConnection *URLConnection = [[NSURLConnection alloc] initWithRequest:URLRequest delegate:self startImmediately:NO];
-		self.URLConnection = URLConnection;
-		
-		NSRunLoop *runLoop = NSRunLoop.currentRunLoop;
-		
-		[URLConnection scheduleInRunLoop:runLoop forMode:NSDefaultRunLoopMode];
-		
-		[URLConnection start];
-	}
-	
-	[lock unlock];
-}
-
-- (void)cancelURLConnection
-{
-	id<NSLocking> lock = self.lock;
-	[lock lock];
-	
-	NSURLConnection *URLConnection = self.URLConnection;
-	if(URLConnection != nil)
-	{
-		[URLConnection cancel];
-		
-		[URLConnection unscheduleFromRunLoop:NSRunLoop.currentRunLoop forMode:NSDefaultRunLoopMode];
-		self.URLConnection = nil;
-	}
-	
-	self.URLResponse = nil;
-	self.data = nil;
-	
-	[self finish];
-	
-	[lock unlock];
-}
-
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@: %p URL:%@>", self.class, self, self.request.URL];
-}
-
-#pragma mark - NSURLConnectionDelegate
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-	TwitchURLConnectionCompletionHandler completionHandler = self.completionHandler;
-	if(completionHandler != nil)
-	{
-		dispatch_async(self.queue, ^{
-			completionHandler(nil, error);
-		});
-	}
-	
-	[self cancelURLConnection];
-}
-
-#pragma mark - NSURLConnectionDataDelegate
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response_
-{
-	NSHTTPURLResponse *response = (NSHTTPURLResponse *)response_;
-	
-	NSNumber *contentlength = response.twitch_contentLength;
-	self.contentLength = contentlength;
-	
-	self.URLResponse = (NSHTTPURLResponse *)response;
-	self.data = [NSMutableData dataWithCapacity:contentlength.unsignedIntegerValue];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)newData
-{
-	NSMutableData *data = self.data;
-	[data appendData:newData];
-	
-	TwitchURLConnectionProgressHandler progressHandler = self.progressHandler;
-	if(progressHandler != nil)
-	{
-		NSNumber *contentLength = self.contentLength;
-		if(contentLength != nil)
-		{
-			long long contentLengthValue = contentLength.longLongValue;
-			if(contentLengthValue != 0)
-			{
-				float progress = data.length / (float)contentLengthValue;
-				
-				dispatch_async(self.queue, ^{
-					progressHandler(progress);
-				});
-			}
-		}
-	}
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-	TwitchURLRequest *request = self.request;
-	TwitchURLResponse *response = nil;
-	NSError *error = nil;
-	
-	// HTTP response OK with content
-	NSInteger statusCode = self.URLResponse.statusCode;
-	if(statusCode >= 200 && statusCode <= 299)
-	{
-		Class responseClass = request.responseClass;
-		response = [[responseClass alloc] initWithData:self.data error:&error];
-		
-		if(response == nil && error == nil)
-		{
-			error = [NSError errorWithDomain:@"TODO" code:2 userInfo:nil];
-		}
-	}
-	else
-	{
-		NSString *localizedDescription = [NSHTTPURLResponse localizedStringForStatusCode:statusCode];
-		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: localizedDescription,
-		};
-		error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:userInfo];
-	}
-	
-	TwitchURLConnectionCompletionHandler completionHandler = self.completionHandler;
-	if(completionHandler != nil)
-	{
-		dispatch_async(self.queue, ^{
-			completionHandler(response, error);
-		});
-	}
-	
-	[self cancelURLConnection];
+	return [NSString stringWithFormat:@"<%@: %p task:%@>", self.class, self, self.task];
 }
 
 @end

@@ -5,6 +5,4 @@
 
 - (instancetype)initWithUser:(NSString *)user;
 
-- (instancetype)initWithAuthorization:(id<TwitchAuthorization>)authorization;
-
 @end

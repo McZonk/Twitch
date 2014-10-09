@@ -13,27 +13,32 @@
 
 @implementation TwitchChannelCommercialRequest
 
-- (instancetype)initWithChannel:(NSString *)channel length:(TwitchChannelCommercialLength)length authorization:(id<TwitchAuthorization>)authorization
+- (instancetype)initWithChannel:(NSString *)channel length:(TwitchChannelCommercialLength)length
 {
-	NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitch.tv/kraken/channels/%@/commercial", channel]];
-	
-	self = [super initWithURL:URL authorization:authorization];
+	self = [super init];
 	if(self != nil)
 	{
+		self.channel = channel;
 		self.length = length;
 	}
 	return self;
 }
 
+- (NSURL *)URL
+{
+	NSString *channel = self.channel;
+	return [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitch.tv/kraken/channels/%@/commercial", channel]];
+}
+
 - (NSMutableURLRequest *)URLRequest
 {
-	NSDictionary *parameters = @{
-		@"length": @(self.length),
-	};
-	
 	NSMutableURLRequest *URLRequest = super.URLRequest;
 	
 	URLRequest.HTTPMethod = @"POST";
+
+	NSDictionary *parameters = @{
+		@"length": [NSString stringWithFormat:@"%ld", (long)self.length],
+	};
 	URLRequest.HTTPBody = [self.class URLEncodedDataWithParameters:parameters];
 	
 	return URLRequest;

@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
 
-@protocol TwitchAuthorization <NSObject>
+@protocol TwitchAuthorization <NSObject, NSCopying>
 @required
 
-- (BOOL)apply:(NSMutableURLRequest *)request;
+- (NSDictionary *)HTTPHeaders;
 
 @end
+

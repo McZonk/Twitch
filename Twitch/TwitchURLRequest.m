@@ -2,13 +2,6 @@
 
 #import "TwitchURLResponse.h"
 
-@interface TwitchURLRequest ()
-
-@property (nonatomic, copy) NSURL *URL;
-@property (nonatomic, strong) id<TwitchAuthorization> authorization;
-
-@end
-
 
 @implementation TwitchURLRequest
 
@@ -37,13 +30,12 @@
 	return [[self URLEncodedStringWithParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (instancetype)initWithURL:(NSURL *)URL authorization:(id<TwitchAuthorization>)authorization
+- (instancetype)init
 {
 	self = [super init];
 	if(self != nil)
 	{
-		self.URL = URL;
-		self.authorization = authorization;
+		
 	}
 	return self;
 }
@@ -53,13 +45,14 @@
 	return TwitchURLResponse.class;
 }
 
+- (NSURL *)URL
+{
+	return [NSURL URLWithString:@"https://api.twitch.tv/kraken/"];
+}
+
 - (NSMutableURLRequest *)URLRequest
 {
-	NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:self.URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15.0];
-	
-	[self.authorization apply:URLRequest];
-	
-	return URLRequest;
+	return [NSMutableURLRequest requestWithURL:self.URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15.0];
 }
 
 - (NSString *)description

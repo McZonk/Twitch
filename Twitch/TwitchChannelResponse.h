@@ -5,6 +5,7 @@
 @property (nonatomic, assign, readonly) long long identifier;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *displayName;
+@property (nonatomic, copy, readonly) NSString *status;
 @property (nonatomic, copy, readonly) NSString *game;
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSString *email;

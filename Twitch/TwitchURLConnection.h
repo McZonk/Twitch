@@ -2,9 +2,9 @@
 
 @class TwitchURLRequest;
 @class TwitchURLResponse;
+@protocol TwitchAuthorization;
 
 
-typedef void(^TwitchURLConnectionProgressHandler)(float progress);
 typedef void(^TwitchURLConnectionCompletionHandler)(TwitchURLResponse *response, NSError *error);
 
 
@@ -12,6 +12,6 @@ typedef void(^TwitchURLConnectionCompletionHandler)(TwitchURLResponse *response,
 
 - (instancetype)initWithRequest:(TwitchURLRequest *)request queue:(dispatch_queue_t)queue completionHandler:(TwitchURLConnectionCompletionHandler)completionHandler;
 
-- (instancetype)initWithRequest:(TwitchURLRequest *)request queue:(dispatch_queue_t)queue progressHandler:(TwitchURLConnectionProgressHandler)progressHandler completionHandler:(TwitchURLConnectionCompletionHandler)completionHandler;
+- (instancetype)initWithRequest:(TwitchURLRequest *)request authorization:(id<TwitchAuthorization>)authorization queue:(dispatch_queue_t)queue completionHandler:(TwitchURLConnectionCompletionHandler)completionHandler;
 
 @end

@@ -10,6 +10,6 @@ typedef NS_ENUM(NSUInteger, TwitchChannelCommercialLength) {
 
 @interface TwitchChannelCommercialRequest : TwitchURLRequest
 
-- (instancetype)initWithChannel:(NSString *)channel length:(TwitchChannelCommercialLength)length authorization:(id<TwitchAuthorization>)authorization;
+- (instancetype)initWithChannel:(NSString *)channel length:(TwitchChannelCommercialLength)length;
 
 @end
