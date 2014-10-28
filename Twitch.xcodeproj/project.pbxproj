@@ -46,6 +46,8 @@
 		5043441A19D43FA70046D9F8 /* TwitchAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441819D43FA70046D9F8 /* TwitchAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043441E19D440660046D9F8 /* TwitchAccessTokenAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043441F19D440660046D9F8 /* TwitchAccessTokenAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */; };
+		505C2D5D19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 505C2D5B19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h */; };
+		505C2D5E19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 505C2D5C19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m */; };
 		506CE02A19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE02819E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		506CE02B19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 506CE02919E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m */; };
 		506CE02E19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE02C19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +122,8 @@
 		5043441819D43FA70046D9F8 /* TwitchAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAuthorization.h; sourceTree = "<group>"; };
 		5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchAccessTokenAuthorization.h; sourceTree = "<group>"; };
 		5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchAccessTokenAuthorization.m; sourceTree = "<group>"; };
+		505C2D5B19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+TwitchQueryComponents.h"; sourceTree = "<group>"; };
+		505C2D5C19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLComponents+TwitchQueryComponents.m"; sourceTree = "<group>"; };
 		506CE02819E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchChannelUpdateRequest.h; sourceTree = "<group>"; };
 		506CE02919E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitchChannelUpdateRequest.m; sourceTree = "<group>"; };
 		506CE02C19E5B2C100A0D8BC /* TwitchSearchGamesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitchSearchGamesRequest.h; sourceTree = "<group>"; };
@@ -182,21 +186,20 @@
 			isa = PBXGroup;
 			children = (
 				504343BC19D3E9300046D9F8 /* Twitch.h */,
+				505C2D5A19FFB70F00687ABF /* Categories */,
 				504343FD19D40FB90046D9F8 /* URL */,
 				504343FC19D40FA70046D9F8 /* JSON */,
 				5043440F19D43AAF0046D9F8 /* Channel */,
 				504343EF19D403700046D9F8 /* Ingest */,
 				5043440A19D427880046D9F8 /* OAuth2 */,
 				506CE03019E5B59B00A0D8BC /* Search */,
-				504343E319D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h */,
-				504343E419D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m */,
-				504343BA19D3E9300046D9F8 /* Supporting Files */,
 				5043441819D43FA70046D9F8 /* TwitchAuthorization.h */,
 				508227EB19E484D2004A62B9 /* TwitchAuthorization.m */,
 				5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */,
 				5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */,
 				508227E719E4730D004A62B9 /* TwitchClientIdentifierAuthorization.h */,
 				508227E819E4730D004A62B9 /* TwitchClientIdentifierAuthorization.m */,
+				504343BA19D3E9300046D9F8 /* Supporting Files */,
 			);
 			path = Twitch;
 			sourceTree = "<group>";
@@ -302,6 +305,17 @@
 			name = Channel;
 			sourceTree = "<group>";
 		};
+		505C2D5A19FFB70F00687ABF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				504343E319D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h */,
+				504343E419D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m */,
+				505C2D5B19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h */,
+				505C2D5C19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		506CE03019E5B59B00A0D8BC /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +349,7 @@
 				504343D519D3EA120046D9F8 /* TwitchIngest.h in Headers */,
 				5043440419D41DB80046D9F8 /* TwitchIngestsResponse.h in Headers */,
 				5043440019D41C180046D9F8 /* TwitchIngestsRequest.h in Headers */,
+				505C2D5D19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h in Headers */,
 				5043441E19D440660046D9F8 /* TwitchAccessTokenAuthorization.h in Headers */,
 				5043441619D43F160046D9F8 /* TwitchChannelResponse.h in Headers */,
 				504343E119D3F8200046D9F8 /* TwitchURLRequest.h in Headers */,
@@ -458,6 +473,7 @@
 				506CE03819E6726400A0D8BC /* TwitchGame.m in Sources */,
 				508227EC19E484D2004A62B9 /* TwitchAuthorization.m in Sources */,
 				504343DE19D3F1800046D9F8 /* TwitchURLConnection.m in Sources */,
+				505C2D5E19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m in Sources */,
 				504343E219D3F8200046D9F8 /* TwitchURLRequest.m in Sources */,
 				504343E619D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m in Sources */,
 				506CE03419E5B9CE00A0D8BC /* TwitchSearchGamesResponse.m in Sources */,
