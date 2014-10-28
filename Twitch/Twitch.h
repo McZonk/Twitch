@@ -14,6 +14,8 @@ FOUNDATION_EXPORT double TwitchVersionNumber;
 //! Project version string for Twitch.
 FOUNDATION_EXPORT const unsigned char TwitchVersionString[];
 
+#import "NSHTTPURLResponse+TwitchHeaderFields.h"
+#import "NSURLComponents+TwitchQueryComponents.h"
 
 #import "TwitchURLConnection.h"
 #import "TwitchURLConnection+SharedAuthorization.h"

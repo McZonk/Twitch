@@ -23,7 +23,7 @@
 		504343DE19D3F1800046D9F8 /* TwitchURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343DC19D3F1800046D9F8 /* TwitchURLConnection.m */; };
 		504343E119D3F8200046D9F8 /* TwitchURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343DF19D3F8200046D9F8 /* TwitchURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343E219D3F8200046D9F8 /* TwitchURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343E019D3F8200046D9F8 /* TwitchURLRequest.m */; };
-		504343E519D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343E319D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h */; };
+		504343E519D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343E319D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343E619D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343E419D400650046D9F8 /* NSHTTPURLResponse+TwitchHeaderFields.m */; };
 		504343E919D401DE0046D9F8 /* TwitchURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 504343E719D401DE0046D9F8 /* TwitchURLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		504343EA19D401DE0046D9F8 /* TwitchURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 504343E819D401DE0046D9F8 /* TwitchURLResponse.m */; };
@@ -46,7 +46,7 @@
 		5043441A19D43FA70046D9F8 /* TwitchAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441819D43FA70046D9F8 /* TwitchAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043441E19D440660046D9F8 /* TwitchAccessTokenAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043441C19D440660046D9F8 /* TwitchAccessTokenAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5043441F19D440660046D9F8 /* TwitchAccessTokenAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5043441D19D440660046D9F8 /* TwitchAccessTokenAuthorization.m */; };
-		505C2D5D19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 505C2D5B19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h */; };
+		505C2D5D19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 505C2D5B19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		505C2D5E19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 505C2D5C19FFB73800687ABF /* NSURLComponents+TwitchQueryComponents.m */; };
 		506CE02A19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 506CE02819E5AA6400A0D8BC /* TwitchChannelUpdateRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		506CE02B19E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 506CE02919E5AA6400A0D8BC /* TwitchChannelUpdateRequest.m */; };
