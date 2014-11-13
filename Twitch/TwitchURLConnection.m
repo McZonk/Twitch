@@ -81,7 +81,6 @@
 
 - (void)dealloc
 {
-	NSLog(@"%s %@", __FUNCTION__, self.request);
 }
 
 - (BOOL)isConcurrent
