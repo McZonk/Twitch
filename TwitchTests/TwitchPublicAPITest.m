@@ -81,7 +81,7 @@
 		TwitchIngest *ingest = ingests.firstObject;
 		
 		XCTAssert(ingest.name != nil);
-		XCTAssert(ingest.templateURL != nil);
+		XCTAssert(ingest.URLTemplate != nil);
 		XCTAssert(ingest.identifier > 0);
 		XCTAssert(ingest.availability >= 0.0);
 		

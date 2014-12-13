@@ -4,7 +4,7 @@
 static NSString * const NameKey = @"name";
 static NSString * const DefaultKey = @"default";
 static NSString * const IdentifierKey = @"_id";
-static NSString * const TemplateURLKey = @"url_template";
+static NSString * const URLTemplateKey = @"url_template";
 static NSString * const AvailabilityKey = @"availability";
 
 static NSString * const StreamKeyToken = @"{stream_key}";
@@ -15,13 +15,28 @@ static NSString * const StreamKeyToken = @"{stream_key}";
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) BOOL isDefault;
 @property (nonatomic, assign) long identifier;
-@property (nonatomic, copy) NSString *templateURL;
+@property (nonatomic, copy) NSString *URLTemplate;
 @property (nonatomic, assign) float availability;
 
 @end
 
 
 @implementation TwitchIngest
+
++ (NSURL *)URLWithTemplate:(NSString *)URLTemplate streamKey:(NSString *)streamKey
+{
+	if(URLTemplate == nil)
+	{
+		return nil;
+	}
+	
+	if(streamKey == nil)
+	{
+		return nil;
+	}
+	
+	return [NSURL URLWithString:[URLTemplate stringByReplacingOccurrencesOfString:StreamKeyToken withString:streamKey]];
+}
 
 - (instancetype)init
 {
@@ -65,8 +80,8 @@ static NSString * const StreamKeyToken = @"{stream_key}";
 		}
 		self.identifier = identifier.longValue;
 		
-		NSString *templateURL = JSON[TemplateURLKey];
-		if(![templateURL isKindOfClass:NSString.class])
+		NSString *URLTemplate = JSON[URLTemplateKey];
+		if(![URLTemplate isKindOfClass:NSString.class])
 		{
 			if(error != NULL)
 			{
@@ -78,7 +93,7 @@ static NSString * const StreamKeyToken = @"{stream_key}";
 			}
 			return nil;
 		}
-		self.templateURL = templateURL;
+		self.URLTemplate = URLTemplate;
 		
 		// optional
 		
@@ -99,7 +114,7 @@ static NSString * const StreamKeyToken = @"{stream_key}";
 
 - (NSURL *)URLWithStreamKey:(NSString *)streamKey
 {
-	return [NSURL URLWithString:[self.templateURL stringByReplacingOccurrencesOfString:StreamKeyToken withString:streamKey]];
+	return [self.class URLWithTemplate:self.URLTemplate streamKey:streamKey];
 }
 
 - (void)updatePingWithCompletionHandler:(void(^)(NSNumber *ping))completionHandler
@@ -109,7 +124,7 @@ static NSString * const StreamKeyToken = @"{stream_key}";
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@ %p identifier:%ld name:'%@' URL:'%@'>", self.class, self, (long)self.identifier, self.name, self.templateURL];
+	return [NSString stringWithFormat:@"<%@ %p identifier:%ld name:'%@' URL:'%@'>", self.class, self, (long)self.identifier, self.name, self.URLTemplate];
 }
 
 @end
