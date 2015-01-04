@@ -24,8 +24,6 @@
 - (void)setUp
 {
     [super setUp];
-	
-	TwitchURLConnection.sharedAuthorization = [[TwitchClientIdentifierAuthorization alloc] initWithClientIdentifier:TWITCH_TESTS_CLIENT_IDENTIFIER];
 }
 
 - (void)tearDown
@@ -146,6 +144,41 @@
 	}];
 	[TwitchURLConnection.sharedOperationQueue addOperation:connection];
 	
+	[self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
+		[connection cancel];
+	}];
+}
+
+- (void)testChannelFollows
+{
+	XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+	
+	NSString *channel = @"amazhs";
+	
+	TwitchChannelFollowsRequest *request = [[TwitchChannelFollowsRequest alloc] initWithChannel:channel limit:10 offset:10];
+	
+	TwitchURLConnection *connection = [[TwitchURLConnection alloc] initWithRequest:request queue:nil completionHandler:^(TwitchURLResponse *response, NSError *error) {
+		
+		XCTAssert(response != nil);
+		XCTAssert(error == nil, @"%@", error);
+		XCTAssert([response isKindOfClass:TwitchChannelFollowsResponse.class]);
+		
+		TwitchChannelFollowsResponse *channelFollowsResponse = (TwitchChannelFollowsResponse *)response;
+		
+		XCTAssert(channelFollowsResponse.totalFollowerCount > 0);
+		
+		XCTAssert(channelFollowsResponse.followers.count > 0);
+		
+		TwitchFollower *follower = channelFollowsResponse.followers.firstObject;
+		
+		XCTAssert(follower != nil);
+		XCTAssert(follower.user != nil);
+		XCTAssert(follower.date != nil);
+
+		[expectation fulfill];
+	}];
+	[TwitchURLConnection.sharedOperationQueue addOperation:connection];
+
 	[self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
 		[connection cancel];
 	}];

@@ -11,6 +11,10 @@
 	for(NSString *key in parameters)
 	{
 		NSString *object = parameters[key];
+		if([object isKindOfClass:NSNumber.class])
+		{
+			object = ((NSNumber *)object).stringValue;
+		}
 		
 		if(string.length > 0)
 		{

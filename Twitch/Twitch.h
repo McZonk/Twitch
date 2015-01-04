@@ -48,3 +48,8 @@ FOUNDATION_EXPORT const unsigned char TwitchVersionString[];
 #import "TwitchGame.h"
 #import "TwitchSearchGamesRequest.h"
 #import "TwitchSearchGamesResponse.h"
+
+#import "TwitchChannelFollowsRequest.h"
+#import "TwitchChannelFollowsResponse.h"
+#import "TwitchFollower.h"
+#import "TwitchUser.h"
